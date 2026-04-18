@@ -1,0 +1,109 @@
+const form = document.getElementById('form');
+const errorDisplay = document.getElementById('error-msg');
+
+form.addEventListener('submit', (e) => {
+    // Prevent the form from actually submitting so we can check errors
+    e.preventDefault();
+
+    // Grab values and remove leading/trailing whitespace
+    const user = document.getElementById('username-input').value.trim()
+    const email = document.getElementById('email-input').value.trim()
+    const pass = document.getElementById('password-input').value
+    const repeatPass = document.getElementById('repeat-password-input').value  
+  
+    getSignupError(user, email, pass, repeatPass) 
+    
+});
+   
+    function getSignupError(user, email, pass, repeatPass) {
+    let errors = [];// for submit
+
+    let missingFields = [];//for wrong inputs
+
+    if (user.includes(" ") || pass.includes(" ")) {
+        errors.push("Username and Password cannot contain spaces.");
+    }
+
+    if (pass != repeatPass) {
+        errors.push("Passwords do not match.");
+    }
+ 
+    if (pass.length > 0 && pass.length < 8) {
+        errors.push("Password must be at least 8 characters long.");
+    }
+    
+    if (user === "") {
+    missingFields.push("Username");
+    }
+    if (email === "") {
+    missingFields.push("Email");
+    }
+    if (pass === "") {
+    missingFields.push("Password");
+    }
+    if (repeatPass === "") {
+    missingFields.push("Repeat Password");
+    }
+
+
+    if (missingFields.length > 0) {
+ 
+    let combinedError = missingFields.join(", ") + " must be filled.";
+    
+    
+    errors.push(combinedError);
+    }
+
+    //condition if submit is clicked
+    if (errors.length != 0) {
+    errorDisplay.style.color = "red";
+    errorDisplay.innerHTML = errors.join("<br>");   
+    } 
+    else {
+    submitted = true;
+    errorDisplay.style.color = "green";
+    errorDisplay.innerHTML = "Form submitted successfully!";
+    
+    alert("Account succesfully made redirecting to log in")
+     
+    window.location.href = "Login.html";
+    }
+}
+
+    function getLoginError(email,  pass){
+    let errors = []
+    let missingFields = []
+    
+    if (email === "") {
+    missingFields.push("Email");
+    }
+    if (pass === "") {
+    missingFields.push("Password");
+    }
+
+    if (missingFields.length > 0) {
+ 
+    let combinedError = missingFields.join(", ") + " must be filled.";
+    
+    
+    errors.push(combinedError);
+    }
+    
+    if (errors.length != 0) {
+    errorDisplay.style.color = "red";
+    errorDisplay.innerHTML = errors.join("<br>");   
+    } 
+    else {
+    submitted = true;
+    errorDisplay.style.color = "green";
+    errorDisplay.innerHTML = "Form submitted successfully!";
+    
+    alert("Account succesfully made redirecting to log in")
+     
+    window.location.href = "index.html";
+    }
+    
+
+
+    return errors
+}
