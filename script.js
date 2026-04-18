@@ -6,13 +6,24 @@ form.addEventListener('submit', (e) => {
     e.preventDefault();
 
     // Grab values and remove leading/trailing whitespace
-    const user = document.getElementById('username-input').value.trim()
-    const email = document.getElementById('email-input').value.trim()
-    const pass = document.getElementById('password-input').value
-    const repeatPass = document.getElementById('repeat-password-input').value  
-  
-    getSignupError(user, email, pass, repeatPass) 
-    
+    const usernameInput = document.getElementById('username-input');
+    const emailInput = document.getElementById('email-input');
+    const passwordInput = document.getElementById('password-input');
+    const repeatPasswordInput = document.getElementById('repeat-password-input');
+
+    const user = usernameInput?.value.trim() || '';
+    const email = emailInput?.value.trim() || '';
+    const pass = passwordInput?.value || '';
+    const repeatPass = repeatPasswordInput?.value || '';
+
+    // Check if this is a signup form (username field exists)
+    const isSignupPage = usernameInput !== null;
+
+    if (isSignupPage) {
+        getSignupError(user, email, pass, repeatPass);
+    } else {
+        getLoginError(email, pass);
+    }
 });
    
     function getSignupError(user, email, pass, repeatPass) {
