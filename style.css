@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+:root{
+    --accent-color: #a202ff;
+    --base-color: white;
+    --text-color:black;
+    --input-color:#F3F0FF;
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+html{
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 23pt;
+    color: var(--text-color);
+    text-align: center;
+}
+body{
+    min-height: 100vh;
+}
+/*Sign Up Section*/
+.signin-wrapper{
+    background-color: var(--base-color);
+    height: 100vh;
+    width: max(100%, 500px);
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+   
+}
+h1{
+    font-size: 3rem;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+.signin-border{
+    border: 2px solid black;
+    padding: 40px;
+    border-radius: 10px;
+    background-color: var(--base-color);
+}
+form{
+    width: min(400px , 100%);
+    margin-top: 20px;
+    margin-bottom: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    fill: var(--text-color);
+    
+    
+}
+form > div{
+    width: 100%;
+ 
+}
+form input{
+    border: solid 2px black;
+}
+
+form input{
+    box-sizing: border-box;
+    flex-grow: 1;
+    min-width: 0;
+    height: 50px;
+    padding: 1em;
+    font:inherit;
+    border-radius: 0 10px 10px 0;
+    border: none;
+    background-color: var(--input-color);
+    transition: 150ms ease;
+}
+form input:hover{
+    border: 2px solid var(--accent-color);
+}
+form input:focus{
+    outline: none;
+    border-color: var(--text-color);
+}
+form button{
+    margin-top: 10px;
+    border: none;
+    border-radius: 20px;
+    padding: .50em 4em;
+    background-color: var(--accent-color);
+    color: var(--base-color);
+    font: inherit;
+    font-weight: 600;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+form button:hover{
+    outline: none;
+    background-color: var(--text-color);
+}
+a{
+    text-decoration: none;
+    color: var(--accent-color);
+}
+a:hover{
+    text-decoration: underline;
+}
+@media(max-width:1100px){
+    .wrapper{
+        width: min(600px,100%);
+    }
+}
+
+.error-color{
+    color: red;
+}
+
+
+
+
