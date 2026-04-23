@@ -31,6 +31,8 @@ form.addEventListener('submit', (e) => {
 
     let missingFields = [];//for wrong inputs
 
+    let longpass = [];
+
     if (user.includes(" ") || pass.includes(" ")) {
         errors.push("Username and Password cannot contain spaces.");
     }
@@ -42,6 +44,8 @@ form.addEventListener('submit', (e) => {
     if (pass.length > 0 && pass.length < 8) {
         errors.push("Password must be at least 8 characters long.");
     }
+
+    
     
     if (user === "") {
     missingFields.push("Username");
@@ -55,6 +59,9 @@ form.addEventListener('submit', (e) => {
     if (repeatPass === "") {
     missingFields.push("Repeat Password");
     }
+    if (pass.length >= 15){
+        missingFields.push("Password exceed to 15 characters")
+    }
 
 
     if (missingFields.length > 0) {
@@ -64,6 +71,7 @@ form.addEventListener('submit', (e) => {
     
     errors.push(combinedError);
     }
+     
 
     //condition if submit is clicked
     if (errors.length != 0) {
@@ -91,6 +99,9 @@ form.addEventListener('submit', (e) => {
     if (pass === "") {
     missingFields.push("Password");
     }
+    if (pass.length >= 15){
+        missingFields.push("Password exceed to 15 characters")
+    }
 
     if (missingFields.length > 0) {
  
@@ -107,7 +118,7 @@ form.addEventListener('submit', (e) => {
     else {
     submitted = true;
     errorDisplay.style.color = "green";
-    errorDisplay.innerHTML = "Form submitted successfully!";
+    errorDisplay.innerHTML = "Log in successfully!";
     
     alert("Account succesfully made redirecting to log in")
      
